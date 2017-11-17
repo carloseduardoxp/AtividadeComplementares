@@ -1,19 +1,33 @@
 package model.domain;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TB_PPC")
 public class PPC {
 	
-	private Integer versao;
+	@EmbeddedId
+	private PPCPK ppcPk;
 	
+	@Column(name="QT_HORAS",nullable=false)
 	private Integer quantidadeHorasComplementares;
 	
+	@ManyToOne
+	@JoinColumn(name="CD_CURSO",referencedColumnName="CD_CURSO",
+	insertable=false,updatable=false)
 	private Curso curso;
 
-	public Integer getVersao() {
-		return versao;
+	public PPCPK getPpcPk() {
+		return ppcPk;
 	}
 
-	public void setVersao(Integer versao) {
-		this.versao = versao;
+	public void setPpcPk(PPCPK ppcPk) {
+		this.ppcPk = ppcPk;
 	}
 
 	public Integer getQuantidadeHorasComplementares() {

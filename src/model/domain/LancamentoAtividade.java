@@ -4,16 +4,43 @@ import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="TB_LANCAMENTO_ATIVIDADE")
 public class LancamentoAtividade {
 	
+	@Id
+	@Column(name="CD_LANCAMENTO_ATIVIDADE")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="CD_ALUNO",referencedColumnName="CD_ALUNO")
 	private Aluno aluno;
 	
+	@ManyToOne
+	@JoinColumn(name="CD_ATIVIDADE",referencedColumnName="CD_ATIVIDADE")
 	private Atividade atividade;
 	
+	@Column(name="QT_HORAS",nullable=false)
 	private Integer quantidadeHoras;
 	
+	@Column(name="DT_INICIO")
+	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
 	
+	@Column(name="DT_FIM")
+	@Temporal(TemporalType.DATE)
 	private Date dataFim;
 	
 	public String getSemestreAtividade() {

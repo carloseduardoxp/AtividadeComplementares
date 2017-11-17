@@ -1,7 +1,10 @@
 package model.domain;
 
-import org.junit.jupiter.api.Test;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 public class LancamentoAtividadeTest {
 	
@@ -54,6 +57,34 @@ public class LancamentoAtividadeTest {
 		lancamento.setAtividade(atividade);
 		lancamento.setQuantidadeHoras(8);
 		Assert.assertEquals(lancamento.horasAproveitadas(),8,0.0001);
+	}
+	
+	@Test
+	public void testaAnoMesPrimeiroSemestre() {
+		LancamentoAtividade lancamento = new LancamentoAtividade();
+		
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.YEAR, 2017);
+		c.set(Calendar.DAY_OF_MONTH,30);
+		c.set(Calendar.MONTH,5);
+		
+		lancamento.setDataFim(c.getTime());
+		
+		Assert.assertEquals(lancamento.getSemestreAtividade(),"2017-1");
+	}
+	
+	@Test
+	public void testaAnoMesSegundoSemestre() {
+		LancamentoAtividade lancamento = new LancamentoAtividade();
+		
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.YEAR, 2025);
+		c.set(Calendar.DAY_OF_MONTH,01);
+		c.set(Calendar.MONTH,6);
+		
+		lancamento.setDataFim(c.getTime());
+		
+		Assert.assertEquals(lancamento.getSemestreAtividade(),"2025-2");
 	}
 
 }
