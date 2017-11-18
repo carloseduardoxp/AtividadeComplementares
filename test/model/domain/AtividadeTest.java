@@ -3,9 +3,8 @@ package model.domain;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import org.junit.jupiter.api.Test;
-
 import org.junit.Assert;
+import org.junit.Test;
 
 public class AtividadeTest {
 	

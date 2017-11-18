@@ -1,10 +1,9 @@
 package model.domain;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class LancamentoAtividadeTest {
 	
