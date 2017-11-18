@@ -1,15 +1,18 @@
 package model.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="TB_ALUNO")
-public class Aluno {
+public class Aluno implements Serializable{
 	
 	@Id
 	@Column(name="DS_RA",nullable=false)
@@ -19,7 +22,10 @@ public class Aluno {
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name="CD_PPC",referencedColumnName="CD_PPC")
+	@JoinColumns({
+	@JoinColumn(name="CD_CURSO",referencedColumnName="CD_CURSO"),
+	@JoinColumn(name="NR_VERSAO",referencedColumnName="NR_VERSAO")}
+	)
 	private PPC ppc;
 
 	public String getRa() {

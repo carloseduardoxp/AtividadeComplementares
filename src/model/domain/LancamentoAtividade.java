@@ -1,5 +1,6 @@
 package model.domain;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
@@ -17,7 +18,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="TB_LANCAMENTO_ATIVIDADE")
-public class LancamentoAtividade {
+public class LancamentoAtividade implements Serializable{
 	
 	@Id
 	@Column(name="CD_LANCAMENTO_ATIVIDADE")
@@ -25,7 +26,7 @@ public class LancamentoAtividade {
 	private Integer id;
 	
 	@ManyToOne
-	@JoinColumn(name="CD_ALUNO",referencedColumnName="CD_ALUNO")
+	@JoinColumn(name="DS_RA",referencedColumnName="DS_RA")
 	private Aluno aluno;
 	
 	@ManyToOne

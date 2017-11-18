@@ -1,17 +1,16 @@
 package model.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 
 @Embeddable
-public class PPCPK {
+public class PPCPK implements Serializable{
 	
-	@Id
 	@Column(name="CD_CURSO",nullable=false)
 	private Integer codigoCurso;
 	
-	@Id
 	@Column(name="NR_VERSAO",nullable=false)
 	private Integer versao;
 
